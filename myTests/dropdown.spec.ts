@@ -23,7 +23,7 @@ test.only("Bootstrap dropdown", async ({ page }) => {
     await selectCountry("India");
     await selectCountry("Denmark");
     await selectCountry("South Africa");
-    async function selectCountry(countryName) {
+    async function selectCountry(countryName: string) {
         await page.click("#country+span");
         await page.locator("ul#select2-country-results")
         .locator("li", {

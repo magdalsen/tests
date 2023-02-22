@@ -35,6 +35,7 @@ export default defineConfig({
     open: "never"
   }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  // testMatch: ["myTests/frames.spec.ts"],
   use: {
     headless: false,
     screenshot: 'only-on-failure',
