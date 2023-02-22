@@ -12,12 +12,12 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "C:/Users/msenger/Desktop/playwright/tests/test-results",
+        "outputDir": "c:/Users/msenger/Desktop/playwright/tests/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "chromium",
         "name": "chromium",
-        "testDir": "C:/Users/msenger/Desktop/playwright/tests/myTests",
+        "testDir": "c:/Users/msenger/Desktop/playwright/tests/myTests",
         "testIgnore": [],
         "testMatch": [
           "**/?(*.)@(spec|test).*"
@@ -25,12 +25,12 @@
         "timeout": 30000
       },
       {
-        "outputDir": "C:/Users/msenger/Desktop/playwright/tests/test-results",
+        "outputDir": "c:/Users/msenger/Desktop/playwright/tests/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "firefox",
         "name": "firefox",
-        "testDir": "C:/Users/msenger/Desktop/playwright/tests/myTests",
+        "testDir": "c:/Users/msenger/Desktop/playwright/tests/myTests",
         "testIgnore": [],
         "testMatch": [
           "**/?(*.)@(spec|test).*"
@@ -38,12 +38,12 @@
         "timeout": 30000
       },
       {
-        "outputDir": "C:/Users/msenger/Desktop/playwright/tests/test-results",
+        "outputDir": "c:/Users/msenger/Desktop/playwright/tests/test-results",
         "repeatEach": 1,
         "retries": 0,
         "id": "webkit",
         "name": "webkit",
-        "testDir": "C:/Users/msenger/Desktop/playwright/tests/myTests",
+        "testDir": "c:/Users/msenger/Desktop/playwright/tests/myTests",
         "testIgnore": [],
         "testMatch": [
           "**/?(*.)@(spec|test).*"
@@ -73,8 +73,8 @@
       "max": 5,
       "threshold": 15000
     },
-    "configFile": "C:\\Users\\msenger\\Desktop\\playwright\\tests\\playwright.config.ts",
-    "rootDir": "C:/Users/msenger/Desktop/playwright/tests/myTests",
+    "configFile": "c:\\Users\\msenger\\Desktop\\playwright\\tests\\playwright.config.ts",
+    "rootDir": "c:/Users/msenger/Desktop/playwright/tests/myTests",
     "quiet": false,
     "shard": null,
     "updateSnapshots": "missing",
@@ -84,13 +84,13 @@
   },
   "suites": [
     {
-      "title": "login.spec.ts",
-      "file": "login.spec.ts",
+      "title": "checkboxExample.spec.ts",
+      "file": "checkboxExample.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Login test demo",
+          "title": "Checkbox test example",
           "ok": true,
           "tags": [],
           "tests": [
@@ -104,60 +104,20 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 11015,
+                  "duration": 4667,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-02-20T12:16:12.619Z",
+                  "startTime": "2023-02-22T13:17:43.450Z",
                   "attachments": []
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "41d3fd2474a19feb00a1-d910438f0d1410533637",
-          "file": "login.spec.ts",
-          "line": 3,
-          "column": 5
-        }
-      ]
-    },
-    {
-      "title": "recorded.spec.ts",
-      "file": "recorded.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [
-        {
-          "title": "test",
-          "ok": true,
-          "tags": [],
-          "tests": [
-            {
-              "timeout": 30000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "chromium",
-              "projectName": "chromium",
-              "results": [
-                {
-                  "workerIndex": 1,
-                  "status": "passed",
-                  "duration": 11935,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2023-02-20T12:16:12.617Z",
-                  "attachments": []
-                }
-              ],
-              "status": "expected"
-            }
-          ],
-          "id": "ed704397f5d99d59097b-09eff42a5e7caeee22a4",
-          "file": "recorded.spec.ts",
+          "id": "46523d47201ac9cd0294-dd7c20e1657dcca6f8c3",
+          "file": "checkboxExample.spec.ts",
           "line": 3,
           "column": 5
         }
