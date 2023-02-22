@@ -84,13 +84,13 @@
   },
   "suites": [
     {
-      "title": "frames.spec.ts",
-      "file": "frames.spec.ts",
+      "title": "windows.spec.ts",
+      "file": "windows.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Interact with frames",
+          "title": "Interact with multiple tabs",
           "ok": true,
           "tags": [],
           "tests": [
@@ -104,25 +104,37 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 10703,
+                  "duration": 7300,
                   "errors": [],
                   "stdout": [
                     {
-                      "text": "No.of frames: 15\n"
+                      "text": "\u001b[33m3\u001b[39m\n"
+                    },
+                    {
+                      "text": "https://www.lambdatest.com/selenium-playground/window-popup-modal-demo\n"
+                    },
+                    {
+                      "text": "https://www.facebook.com/lambdatest/\n"
+                    },
+                    {
+                      "text": "https://twitter.com/intent/follow?screen_name=Lambdatesting\n"
+                    },
+                    {
+                      "text": "LambdaTest\n"
                     }
                   ],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-02-22T14:29:26.286Z",
+                  "startTime": "2023-02-22T14:53:56.829Z",
                   "attachments": []
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "d63184237f32bf31d674-beb40dfe7f04efd1c226",
-          "file": "frames.spec.ts",
-          "line": 3,
+          "id": "c098327896050d377ef5-5d922ce2160572810bef",
+          "file": "windows.spec.ts",
+          "line": 19,
           "column": 5
         }
       ]
