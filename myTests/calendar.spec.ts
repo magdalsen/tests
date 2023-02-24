@@ -10,7 +10,7 @@ test("Calendar using fill function", async ({ page }) => {
   await page.fill("id=birthday", date);
 });
 
-test.only("Calendar demo using moment", async ({ page }) => {
+test("Calendar demo using moment", async ({ page }) => {
   await page.goto(
     "https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo"
   );

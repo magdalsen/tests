@@ -2,6 +2,7 @@ name: Lint
 on: [pull_request]
 jobs:
   eslint:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -9,8 +10,4 @@ jobs:
         with:
           node-version: 16
       - run: npm ci # or yarn install
-      - uses: sibiraj-s/action-eslint@v2
-        with:
-          eslint-args: "--ignore-path=.gitignore --quiet"
-          extensions: "js,jsx,ts,tsx"
-          annotations: true
+      - uses: Maggi64/eslint-plus-action@master
