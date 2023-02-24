@@ -11,9 +11,12 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.30.0",
-    "@types/node": "^18.14.0"
+    "@types/jquery": "^3.5.16",
+    "@types/node": "^18.14.1"
   },
   "dependencies": {
-    "moment": "^2.29.4"
+    "dotenv": "^16.0.3",
+    "moment": "^2.29.4",
+    "playwright-jquery": "^0.3.3"
   }
 }

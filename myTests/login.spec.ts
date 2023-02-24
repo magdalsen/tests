@@ -1,11 +1,11 @@
 import { expect } from "@playwright/test";
-import { LoginPage } from "../pages/login-page";
+import { LoginPage } from "../pages/loginPage";
 import { loginTest } from "../fixtures/login";
 
 loginTest("Login test", async ({page, login, password}) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
-    await loginPage.clickSignupLoginButton();
+    await loginPage.clickSignupLoginButtonPage();
     await loginPage.getLoginData({
         login: login,
         password: password

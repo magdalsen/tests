@@ -35,7 +35,7 @@ export class LoginPage {
     await this.page.goto(this.urlLink);
   }
 
-  async clickSignupLoginButton() {
+  async clickSignupLoginButtonPage() {
     await this.page.locator(this.getSignupLoginButton).click();
   }
 
