@@ -1,20 +1,21 @@
 import test, { expect } from "@playwright/test";
 import { SendEmailPage } from "../pages/sendEmailPage";
+import { sendEmailTest } from "../fixtures/sendEmail";
 import dotenv from 'dotenv';
 
 dotenv.config({
-  path: '.env.sendEmail'
-})
+  path: '.env'
+});
 
-test("Go to contact page and send email", async ({ page }) => {
+sendEmailTest("Go to contact page and send email", async ({ page, name, email, subject, message, success_message }) => {
   const sendEmailPage = new SendEmailPage(page);
   await page.goto(process.env.BASE_URL);
   await sendEmailPage.clickContactButtonPage();
 
-  await sendEmailPage.fillInputFieldName(process.env.NAME);
-  await sendEmailPage.fillInputFieldEmail(process.env.EMAIL);
-  await sendEmailPage.fillInputFieldSubject(process.env.SUBJECT);
-  await sendEmailPage.fillInputFieldMessage(process.env.MESSAGE);
+  await sendEmailPage.fillInputFieldName(name);
+  await sendEmailPage.fillInputFieldEmail(email);
+  await sendEmailPage.fillInputFieldSubject(subject);
+  await sendEmailPage.fillInputFieldMessage(message);
   const submitButton = page.locator(sendEmailPage.submitButton);
   await submitButton.scrollIntoViewIfNeeded();
   page.on('dialog', async dialog => {
@@ -22,5 +23,5 @@ test("Go to contact page and send email", async ({ page }) => {
   });
   await sendEmailPage.clickSubmitButton();
   const successMessage = page.locator(sendEmailPage.successMessage);
-  await expect(successMessage).toHaveText(process.env.SUCCESS_MESSAGE);
+  await expect(successMessage).toHaveText(success_message);
 })

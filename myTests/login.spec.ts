@@ -1,14 +1,18 @@
-import { expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { LoginPage } from "../pages/loginPage";
-import { loginTest } from "../fixtures/login";
+import dotenv from 'dotenv';
 
-loginTest("Login test", async ({page, login, password}) => {
+dotenv.config({
+  path: '.env'
+});
+
+test("Login test", async ({page}) => {
     const loginPage = new LoginPage(page);
-    await loginPage.goto();
+    await page.goto(process.env.BASE_URL);
     await loginPage.clickSignupLoginButtonPage();
     await loginPage.getLoginData({
-        login: login,
-        password: password
+        login: process.env.LOGIN,
+        password: process.env.PASSWORD
     });
     await loginPage.clickLoginButton();
     await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");

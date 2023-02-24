@@ -7,10 +7,6 @@ export class LoginPage {
     this.page = page;
   }
 
-  get urlLink() {
-    return 'https://automationexercise.com/';
-  }
-
   get getSignupLoginButton() {
     return "a[href='/login']";
   }
@@ -29,10 +25,6 @@ export class LoginPage {
 
   get passwordInput() {
     return "input[data-qa='login-password']";
-  }
-
-  async goto() {
-    await this.page.goto(this.urlLink);
   }
 
   async clickSignupLoginButtonPage() {

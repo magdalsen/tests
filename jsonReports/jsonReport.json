@@ -84,13 +84,13 @@
   },
   "suites": [
     {
-      "title": "sendEmail.spec.ts",
-      "file": "sendEmail.spec.ts",
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Go to contact page and send email",
+          "title": "Login test",
           "ok": true,
           "tags": [],
           "tests": [
@@ -104,20 +104,20 @@
                 {
                   "workerIndex": 0,
                   "status": "passed",
-                  "duration": 19152,
+                  "duration": 21693,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-02-24T14:07:19.211Z",
+                  "startTime": "2023-02-24T18:18:32.482Z",
                   "attachments": []
                 }
               ],
               "status": "expected"
             }
           ],
-          "id": "d8baa5e1398f7c858b67-168d193bc00b98606a80",
-          "file": "sendEmail.spec.ts",
+          "id": "41d3fd2474a19feb00a1-a4d46695e3116b2d8a11",
+          "file": "login.spec.ts",
           "line": 9,
           "column": 5
         }
