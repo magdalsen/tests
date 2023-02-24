@@ -16,7 +16,7 @@ test.only("Calendar demo using moment", async ({page})=> {
     const next = page.locator("th[class='next']");
     const monthYear = page.locator("div[class='datepicker-days'] th[class='datepicker-switch']");
 
-    let dateToSelect: string = "December 2022";
+    let dateToSelect: string = "January 2023";
 
     const thisMonth = moment(dateToSelect, "MMMM YYYY").isBefore();
 
@@ -28,10 +28,6 @@ test.only("Calendar demo using moment", async ({page})=> {
         }
     }
 
-    // await page.getByRole('cell', { name: '4' }).nth(0).click();
-    await page.waitForTimeout(3000);
+    await page.locator("td[class='day']:text-is('4')").click();
 
-    // await page.getByRole('cell', { name: 'February 2023' }).click();
-    // await page.getByText('Feb', { exact: true }).click();
-    // await page.getByRole('cell', { name: '9' }).nth(1).click();
 })

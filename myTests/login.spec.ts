@@ -1,17 +1,15 @@
-import {chromium, expect, test} from "@playwright/test"
+import { expect } from "@playwright/test";
+import { LoginPage } from "../pages/login-page";
+import { loginTest } from "../fixtures/login";
 
-test("Login test demo", async () => {
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-
-    await page.goto("https://automationexercise.com/");
-    // await page.click("//a[contains(text(),'Test Cases')]");
-    await page.locator("text=Signup / Login").click();
-    await page.fill("input[data-qa='login-email']", "magdal.sen@gmail.com");
-    await page.fill("input[data-qa='login-password']", "Haslo@1234");
-
-    await page.locator("button[data-qa='login-button']").click();
-
-    await page.waitForTimeout(5000);
+loginTest("Login test", async ({page, login, password}) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.clickSignupLoginButton();
+    await loginPage.getLoginData({
+        login: login,
+        password: password
+    });
+    await loginPage.clickLoginButton();
+    await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
 })
