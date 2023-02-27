@@ -9,8 +9,8 @@ dotenv.config({
 });
 
 sendEmailTest(
-    "Go to contact page and send email",
-      async ({ page, name, email, subject, message, success_message }) => {
+  "Go to contact page and send email",
+  async ({ page, name, email, subject, message, success_message }) => {
     const sendEmailPage = new SendEmailPage(page);
     const navigatePage = new NavigatePage(page);
     await navigatePage.navigateToURL("");
@@ -22,7 +22,7 @@ sendEmailTest(
     await sendEmailPage.fillInputFieldMessage(message);
     const submitButton = page.locator(sendEmailPage.submitButton);
     await submitButton.scrollIntoViewIfNeeded();
-    page.on("dialog", async dialog => {
+    page.on("dialog", async (dialog) => {
       await dialog.accept();
     });
     await sendEmailPage.clickSubmitButton();

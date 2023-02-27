@@ -13,7 +13,7 @@ const sendEmail = test.extend<SendEmail>({
   email: "test@test.pl",
   subject: "subject test",
   message: "Message test",
-  success_message: "Success! Your details have been submitted successfully.",
+  success_message: "Success! Your details have been submitted successfully."
 });
 
 export const sendEmailTest = sendEmail;

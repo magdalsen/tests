@@ -17,5 +17,5 @@ export const dropdownTest = test.extend<Dropdown>({
 });
 
 export const bootstrapDropdownTest = test.extend<BootstrapDropdown>({
-  country: "India",
+  country: "India"
 });

@@ -17,5 +17,5 @@ test("Check interact with frames", async ({ page }) => {
   await framesPage.fillForm(`${fname}`, `${lname}`);
   expect(
     await framesPage.getFrame?.locator(framesPage.getFillFormResultFrame).textContent()
-  ).toContain( `You have entered ${fname} ${lname}` );  
+  ).toContain(`You have entered ${fname} ${lname}`);
 });

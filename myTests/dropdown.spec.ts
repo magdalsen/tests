@@ -19,9 +19,9 @@ dotenv.config({
 //     await expect(page.locator(dropdownPage.getSelectedMultiOption)).toHaveText(`${labelMultipleSelect1},${labelMultipleSelect2}`);
 // });
 
-bootstrapDropdownTest
-  ("Select single dropdown with search",
-   async ({ page, country }) => {
+bootstrapDropdownTest(
+  "Select single dropdown with search",
+  async ({ page, country }) => {
     const navigatePage = new NavigatePage(page);
     const dropdownPage = new DropdownPage(page);
     await navigatePage.navigateToURL(`${process.env.BOOTSTRAP_DROPDOWN_URL}`);

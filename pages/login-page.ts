@@ -31,7 +31,7 @@ export class LoginPage {
     await this.page.locator(this.getSignupLoginButton).click();
   }
 
-  async getLoginData({login, password}) {
+  async getLoginData({ login, password }) {
     await this.page.fill(this.loginInput, login);
     await this.page.fill(this.passwordInput, password);
   }
