@@ -1,17 +1,21 @@
-import { chromium, expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+import { LoginPage } from "../pages/login-page";
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
-test("Login test demo", async () => {
-  const browser = await chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
+dotenv.config({
+  path: ".env"
+});
 
-  await page.goto("https://automationexercise.com/");
-  // await page.click("//a[contains(text(),'Test Cases')]");
-  await page.locator("text=Signup / Login").click();
-  await page.fill("input[data-qa='login-email']", "magdal.sen@gmail.com");
-  await page.fill("input[data-qa='login-password']", "Haslo@1234");
-
-  await page.locator("button[data-qa='login-button']").click();
-
-  await page.waitForTimeout(5000);
+test("Login test", async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  const navigatePage = new NavigatePage(page);
+  await navigatePage.navigateToURL("");
+  await loginPage.clickSignupLoginButtonPage();
+  await loginPage.getLoginData({
+    login: process.env.LOGIN,
+    password: process.env.PASSWORD
+  });
+  await loginPage.clickLoginButton();
+  await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
 });

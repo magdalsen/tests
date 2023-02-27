@@ -1,42 +1,31 @@
-import test, { expect } from "@playwright/test";
+import { expect } from "@playwright/test";
+import { DropdownPage } from "../pages/dropdown-page";
+import { bootstrapDropdownTest } from "../fixtures/dropdown";
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
-test("Dropdown test example", async ({ page }) => {
-  await page.goto(
-    "https://www.lambdatest.com/selenium-playground/select-dropdown-demo"
-  );
-  await page.selectOption("#select-demo", {
-    label: "Tuesday"
-    //lub value: "Tuesday" lub index: 5
-  });
-
-  await page.selectOption("#multi-select", [
-    {
-      label: "Texas"
-    },
-    {
-      index: 2
-    },
-    {
-      value: "Washington"
-    }
-  ]);
+dotenv.config({
+  path: ".env"
 });
 
-test("Bootstrap dropdown", async ({ page }) => {
-  await page.goto(
-    "https://www.lambdatest.com/selenium-playground/jquery-dropdown-search-demo"
-  );
-  await selectCountry("India");
-  await selectCountry("Denmark");
-  await selectCountry("South Africa");
-  async function selectCountry(countryName: string) {
-    await page.click("#country+span");
-    await page
-      .locator("ul#select2-country-results")
-      .locator("li", {
-        hasText: countryName
-      })
-      .click();
+// dropdownTest("Select one and multiple dropdown option", async ({ page, label, labelMultipleSelect1, labelMultipleSelect2 }) => {
+//     const navigatePage = new NavigatePage(page);
+//     const dropdownPage = new DropdownPage(page);
+//     await navigatePage.navigateToURL(`${process.env.DROPDOWN_URL}`);
+//     await dropdownPage.selectOneOption(label);
+//     await expect(page.locator(dropdownPage.getSelectedOneOption)).toHaveText(`Day selected :- ${label}`);
+//     await dropdownPage.selectMultipleOption(labelMultipleSelect1, labelMultipleSelect2);
+//     await dropdownPage.clickPrintAllButton();
+//     await expect(page.locator(dropdownPage.getSelectedMultiOption)).toHaveText(`${labelMultipleSelect1},${labelMultipleSelect2}`);
+// });
+
+bootstrapDropdownTest(
+  "Select single dropdown with search",
+  async ({ page, country }) => {
+    const navigatePage = new NavigatePage(page);
+    const dropdownPage = new DropdownPage(page);
+    await navigatePage.navigateToURL(`${process.env.BOOTSTRAP_DROPDOWN_URL}`);
+    await dropdownPage.selectCountry(country);
+    await expect(page.locator(dropdownPage.getSingleSelect)).toHaveText(country);
   }
-  await page.waitForTimeout(3000);
-});
+);
