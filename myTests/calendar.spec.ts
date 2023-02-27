@@ -29,10 +29,9 @@ calendarTest(
 
     await navigatePage.navigateToURL(`${process.env.CALENDAR_URL}`);
     await calendarPage.clickStartDateButton();
-      while ((await monthYear.textContent()) != dateToSelect) {
+    while ((await monthYear.textContent()) != dateToSelect) {
       (await calendarPage.checkIfDateIsBefore(dateToSelect))
-        ?
-    await previous.click()
+        ? await previous.click()
         : await next.click();
     }
     await calendarPage.clickSelectedDate();

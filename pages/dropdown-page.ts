@@ -41,8 +41,8 @@ export class DropdownPage {
 
   async selectMultipleOption(
     labelMultipleSelect1: string,
-    labelMultipleSelect2: string)
-  {
+    labelMultipleSelect2: string
+  ) {
     await this.page
       .locator(this.getMultiSelect)
       .selectOption([labelMultipleSelect1, labelMultipleSelect2]);
