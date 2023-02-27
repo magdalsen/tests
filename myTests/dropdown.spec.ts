@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import { DropdownPage } from "../pages/dropdownPage";
-import { dropdownTest, bootstrapDropdownTest } from "../fixtures/dropdown";
+import { bootstrapDropdownTest } from "../fixtures/dropdown";
 import { NavigatePage } from "../shared/navigatePage";
 import dotenv from 'dotenv';
 
