@@ -1,9 +1,9 @@
 import test, { expect } from "@playwright/test";
-import { NavigatePage } from "../shared/navigatePage";
-import dotenv from 'dotenv';
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
 dotenv.config({
-  path: '.env'
+  path: ".env"
 });
 
 test("Checkbox test", async ({ page }) => {

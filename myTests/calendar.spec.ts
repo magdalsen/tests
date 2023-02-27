@@ -1,14 +1,14 @@
 import { expect } from "@playwright/test";
-import { CalendarPage } from "../pages/calendarPage";
+import { CalendarPage } from "../pages/calendar-page";
 import { calendarTest } from "../fixtures/calendar";
-import { NavigatePage } from "../shared/navigatePage";
-import dotenv from 'dotenv';
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
 dotenv.config({
-  path: '.env'
+  path: ".env"
 });
 
-calendarTest("Check if calendar data is fullfilled", async ({page,date})=> {
+calendarTest("Check if calendar data is fullfilled", async ({ page, date })=> {
     const navigatePage = new NavigatePage(page);
     const calendarPage = new CalendarPage(page);
 
@@ -17,7 +17,7 @@ calendarTest("Check if calendar data is fullfilled", async ({page,date})=> {
     await expect((page.locator(calendarPage.getCalendarData))).toHaveValue(date);
 })
 
-calendarTest("Check if calendar data is fullfilled using moment", async ({page,dateToSelect,selectedYear})=> {
+calendarTest("Check if calendar data is fullfilled using moment", async ({ page, dateToSelect, selectedYear })=> {
     const navigatePage = new NavigatePage(page);
     const calendarPage = new CalendarPage(page);
     const prev = page.locator(calendarPage.getPreviousDate);

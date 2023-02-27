@@ -1,11 +1,11 @@
 import { expect } from "@playwright/test";
-import { DropdownPage } from "../pages/dropdownPage";
+import { DropdownPage } from "../pages/dropdown-page";
 import { bootstrapDropdownTest } from "../fixtures/dropdown";
-import { NavigatePage } from "../shared/navigatePage";
-import dotenv from 'dotenv';
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
 dotenv.config({
-  path: '.env'
+  path: ".env"
 });
 
 // dropdownTest("Select one and multiple dropdown option", async ({ page, label, labelMultipleSelect1, labelMultipleSelect2 }) => {

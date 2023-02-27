@@ -1,11 +1,11 @@
 import { expect } from "@playwright/test";
-import { SendEmailPage } from "../pages/sendEmailPage";
-import { sendEmailTest } from "../fixtures/sendEmail";
-import { NavigatePage } from "../shared/navigatePage";
-import dotenv from 'dotenv';
+import { SendEmailPage } from "../pages/send-email-page";
+import { sendEmailTest } from "../fixtures/send-email";
+import { NavigatePage } from "../shared/navigate-page";
+import dotenv from "dotenv";
 
 dotenv.config({
-  path: '.env'
+  path: ".env"
 });
 
 sendEmailTest("Go to contact page and send email", async ({ page, name, email, subject, message, success_message }) => {
