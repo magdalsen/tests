@@ -1,5 +1,5 @@
-import { Page } from '@playwright/test';
-import moment from 'moment';
+import { Page } from "@playwright/test";
+import moment from "moment";
 
 export class CalendarPage {
   readonly page: Page;
@@ -47,5 +47,4 @@ export class CalendarPage {
   async clickSelectedDate() {
     await this.page.locator(this.getSelectedDate).click();
   }
-
 }

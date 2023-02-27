@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class NavigatePage {
   readonly page: Page;
@@ -10,5 +10,4 @@ export class NavigatePage {
   async navigateToURL(url: string) {
     await this.page.goto(url);
   }
-
 }

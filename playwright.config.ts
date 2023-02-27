@@ -1,7 +1,7 @@
-import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
 dotenv.config({
-  path: '.env'
+  path: ".env"
 });
 
 /**
@@ -14,7 +14,7 @@ dotenv.config({
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './myTests',
+  testDir: "./myTests",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -33,17 +33,26 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["dot"], ["json", {
-    outputFile: "jsonReports/jsonReport.json"
-  }], ['html', {
-    open: "never"
-  }]],
+  reporter: [
+    ["dot"],
+    [
+      "json",
+     {
+        outputFile: "jsonReports/jsonReport.json"
+      }
+    ],
+      ["html",
+     {
+        open: "never"
+      }
+    ]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   // testMatch: ["myTests/frames.spec.ts"],
   use: {
     headless: true,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
     launchOptions: {
       slowMo: 1000
     },
@@ -53,24 +62,24 @@ export default defineConfig({
     baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] }
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] }
     },
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] }
+    }
 
     /* Test against mobile viewports. */
     // {
@@ -91,7 +100,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { channel: 'chrome' },
     // },
-  ],
+  ]
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/',

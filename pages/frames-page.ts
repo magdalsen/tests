@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class FramesPage {
   readonly page: Page;
@@ -27,5 +27,4 @@ export class FramesPage {
     await this.getFrame?.fill(this.getFirstName, fname);
     await this.getFrame?.fill(this.getLastName, lname);
   }
-
 }

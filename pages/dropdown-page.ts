@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class DropdownPage {
   readonly page: Page;
@@ -39,8 +39,12 @@ export class DropdownPage {
     await this.page.selectOption(this.getSelectOne, label);
   }
 
-  async selectMultipleOption(labelMultipleSelect1: string, labelMultipleSelect2: string) {
-    await this.page.locator(this.getMultiSelect).selectOption([labelMultipleSelect1, labelMultipleSelect2]);
+  async selectMultipleOption(
+    labelMultipleSelect1: string,
+    labelMultipleSelect2: string) {
+    await this.page
+    .locator(this.getMultiSelect)
+    .selectOption([labelMultipleSelect1, labelMultipleSelect2]);
   }
 
   async clickPrintAllButton() {
@@ -49,12 +53,11 @@ export class DropdownPage {
 
   async selectCountry(countryName: string) {
     await this.page.click("#country+span");
-    await this.page.locator(this.getCountry)
-    .locator("li", {
+    await this.page
+      .locator(this.getCountry)
+      .locator("li", {
         hasText: countryName
-    })
-    .click();
+      })
+      .click();
   }
-  
-
 }

@@ -8,14 +8,14 @@ dotenv.config({
 });
 
 test("Login test", async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const navigatePage = new NavigatePage(page);
-    await navigatePage.navigateToURL('');
-    await loginPage.clickSignupLoginButtonPage();
-    await loginPage.getLoginData({
-      login: process.env.LOGIN,
-      password: process.env.PASSWORD
-    });
-    await loginPage.clickLoginButton();
-    await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
-})
+  const loginPage = new LoginPage(page);
+  const navigatePage = new NavigatePage(page);
+  await navigatePage.navigateToURL("");
+  await loginPage.clickSignupLoginButtonPage();
+  await loginPage.getLoginData({
+    login: process.env.LOGIN,
+    password: process.env.PASSWORD
+  });
+  await loginPage.clickLoginButton();
+  await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
+});

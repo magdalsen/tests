@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page } from "@playwright/test";
 
 export class LoginPage {
   readonly page: Page;
@@ -26,7 +26,7 @@ export class LoginPage {
   get passwordInput() {
     return "input[data-qa='login-password']";
   }
-  
+
   async clickSignupLoginButtonPage() {
     await this.page.locator(this.getSignupLoginButton).click();
   }
@@ -39,5 +39,4 @@ export class LoginPage {
   async clickLoginButton() {
     await this.page.locator(this.getLoginButton).click();
   }
-
 }
