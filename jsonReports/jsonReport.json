@@ -84,14 +84,14 @@
   },
   "suites": [
     {
-      "title": "login.spec.ts",
-      "file": "login.spec.ts",
+      "title": "dropdown.spec.ts",
+      "file": "dropdown.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [
         {
-          "title": "Login test",
-          "ok": true,
+          "title": "Select one and multiple dropdown option",
+          "ok": false,
           "tags": [],
           "tests": [
             {
@@ -103,23 +103,52 @@
               "results": [
                 {
                   "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 21693,
-                  "errors": [],
+                  "status": "failed",
+                  "duration": 8726,
+                  "error": {
+                    "message": "\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Texas,Washington\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Texas,Washington\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\n    at c:\\Users\\msenger\\Desktop\\playwright\\tests\\myTests\\dropdown.spec.ts:19:84"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "c:\\Users\\msenger\\Desktop\\playwright\\tests\\myTests\\dropdown.spec.ts",
+                        "column": 84,
+                        "line": 19
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"Texas,Washington\"\u001b[39m\nReceived string:    \u001b[31m\"\"\u001b[39m\n\n\u001b[90m   at \u001b[39mdropdown.spec.ts:19\n\n  17 |     await dropdownPage.selectMultipleOption(labelMultipleSelect1, labelMultipleSelect2);\n  18 |     await dropdownPage.clickPrintAllButton();\n> 19 |      expect(await page.locator(dropdownPage.getSelectedMultiOption).textContent()).toContain(`${labelMultipleSelect1},${labelMultipleSelect2}`);\n     |                                                                                    ^\n  20 | });\n  21 |\n  22 | bootstrapDropdownTest(\"Select single dropdown with search\", async ({ page, country }) => {\n\n\u001b[2m    at c:\\Users\\msenger\\Desktop\\playwright\\tests\\myTests\\dropdown.spec.ts:19:84\u001b[22m"
+                    }
+                  ],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2023-02-24T18:18:32.482Z",
-                  "attachments": []
+                  "startTime": "2023-02-27T08:46:26.145Z",
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "c:\\Users\\msenger\\Desktop\\playwright\\tests\\test-results\\dropdown-Select-one-and-multiple-dropdown-option-chromium\\video.webm"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "c:\\Users\\msenger\\Desktop\\playwright\\tests\\test-results\\dropdown-Select-one-and-multiple-dropdown-option-chromium\\test-failed-1.png"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "c:\\Users\\msenger\\Desktop\\playwright\\tests\\myTests\\dropdown.spec.ts",
+                    "column": 84,
+                    "line": 19
+                  }
                 }
               ],
-              "status": "expected"
+              "status": "unexpected"
             }
           ],
-          "id": "41d3fd2474a19feb00a1-a4d46695e3116b2d8a11",
-          "file": "login.spec.ts",
-          "line": 9,
-          "column": 5
+          "id": "26e243c9a3d273e4cdec-478b473a41049a24e6bf",
+          "file": "dropdown.spec.ts",
+          "line": 11,
+          "column": 13
         }
       ]
     }

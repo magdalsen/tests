@@ -26,7 +26,7 @@ export class LoginPage {
   get passwordInput() {
     return "input[data-qa='login-password']";
   }
-
+  
   async clickSignupLoginButtonPage() {
     await this.page.locator(this.getSignupLoginButton).click();
   }

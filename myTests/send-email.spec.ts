@@ -1,6 +1,7 @@
-import test, { expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { SendEmailPage } from "../pages/sendEmailPage";
 import { sendEmailTest } from "../fixtures/sendEmail";
+import { NavigatePage } from "../shared/navigatePage";
 import dotenv from 'dotenv';
 
 dotenv.config({
@@ -9,7 +10,8 @@ dotenv.config({
 
 sendEmailTest("Go to contact page and send email", async ({ page, name, email, subject, message, success_message }) => {
   const sendEmailPage = new SendEmailPage(page);
-  await page.goto(process.env.BASE_URL);
+  const navigatePage = new NavigatePage(page);
+  await navigatePage.navigateToURL('');
   await sendEmailPage.clickContactButtonPage();
 
   await sendEmailPage.fillInputFieldName(name);

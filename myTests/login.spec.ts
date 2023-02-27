@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { LoginPage } from "../pages/loginPage";
+import { NavigatePage } from "../shared/navigatePage";
 import dotenv from 'dotenv';
 
 dotenv.config({
@@ -8,7 +9,8 @@ dotenv.config({
 
 test("Login test", async ({page}) => {
     const loginPage = new LoginPage(page);
-    await page.goto(process.env.BASE_URL);
+    const navigatePage = new NavigatePage(page);
+    await navigatePage.navigateToURL('');
     await loginPage.clickSignupLoginButtonPage();
     await loginPage.getLoginData({
         login: process.env.LOGIN,

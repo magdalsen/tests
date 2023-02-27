@@ -1,33 +1,35 @@
-import test from "@playwright/test";
-import moment from "moment";
+import { expect } from "@playwright/test";
+import { CalendarPage } from "../pages/calendarPage";
+import { calendarTest } from "../fixtures/calendar";
+import { NavigatePage } from "../shared/navigatePage";
+import dotenv from 'dotenv';
 
-test("Calendar using fill function", async ({page})=> {
-    await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
-    let date = "1994-12-04";
+dotenv.config({
+  path: '.env'
+});
 
-    await page.fill("id=birthday", date);
+calendarTest("Check if calendar data is fullfilled", async ({page,date})=> {
+    const navigatePage = new NavigatePage(page);
+    const calendarPage = new CalendarPage(page);
+
+    await navigatePage.navigateToURL(`${process.env.CALENDAR_URL}`);
+    await calendarPage.fillCalendar(date);
+    await expect((page.locator(calendarPage.getCalendarData))).toHaveValue(date);
 })
 
-test.only("Calendar demo using moment", async ({page})=> {
-    await page.goto("https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo");
-    await page.click("input[placeholder='Start date']");
-    
-    const prev = page.locator("div[class='datepicker-days'] th[class='prev']");
-    const next = page.locator("th[class='next']");
-    const monthYear = page.locator("div[class='datepicker-days'] th[class='datepicker-switch']");
+calendarTest("Check if calendar data is fullfilled using moment", async ({page,dateToSelect,selectedYear})=> {
+    const navigatePage = new NavigatePage(page);
+    const calendarPage = new CalendarPage(page);
+    const prev = page.locator(calendarPage.getPreviousDate);
+    const next = page.locator(calendarPage.getNextDate);
+    const monthYear = page.locator(calendarPage.getMonthYear);
+    const currentYear = new Date().getFullYear();
 
-    let dateToSelect: string = "January 2023";
-
-    const thisMonth = moment(dateToSelect, "MMMM YYYY").isBefore();
-
+    await navigatePage.navigateToURL(`${process.env.CALENDAR_URL}`);
+    await calendarPage.clickStartDateButton();
     while (await monthYear.textContent() != dateToSelect) {
-        if (thisMonth) {
-            await prev.click();
-        } else {
-            await next.click();
-        }
+        await calendarPage.checkIfDateIsBefore(dateToSelect) ? await prev.click() : await next.click();
     }
-
-    await page.locator("td[class='day']:text-is('4')").click();
-
+    await calendarPage.clickSelectedDate();
+    await expect(selectedYear).toBeLessThan(currentYear);
 })

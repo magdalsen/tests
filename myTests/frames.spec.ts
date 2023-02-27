@@ -1,22 +1,19 @@
 import test, { expect } from "@playwright/test";
+import { FramesPage } from "../pages/framesPage";
+import { NavigatePage } from "../shared/navigatePage";
+import dotenv from 'dotenv';
+const fname = process.env.FNAME;
+const lname = process.env.LNAME;
 
-test("Interact with frames", async ({page}) => {
-    await page.goto("https://letcode.in/frame");
-    const allframes = page.frames(); //give all frames on page
-    console.log("No.of frames: " + allframes.length);
-    
-    const myFrame = page.frame("firstFr");
-    await fillForm('magda', 'sen');
-    async function fillForm(fname: string, lname: string) {
-        if(myFrame) {
-            await myFrame.fill("input[name='fname']", fname);
-            await myFrame.fill("input[name='lname']", lname);
-            expect(await myFrame.locator("p.has-text-info").textContent()).toContain(`You have entered ${fname} ${lname}`)
-        }
-    }
+dotenv.config({
+  path: '.env'
+});
 
-    const frame = page.frameLocator("#firstFr");
-    const innerFrame = frame.frameLocator("iframe[src='innerFrame']");
-    await innerFrame.locator("input[name='email']").fill("mmm@mmm.com");
-    
+test("Check interact with frames", async ({page}) => {
+    const navigatePage = new NavigatePage(page);
+    const framesPage = new FramesPage(page);
+    await navigatePage.navigateToURL(`${process.env.FRAMES_URL}`);
+    // const allframes = page.frames().length; //give all frames on page
+    await framesPage.fillForm(`${fname}`, `${lname}`);
+    expect(await framesPage.getFrame?.locator(framesPage.getFillFormResultFrame).textContent()).toContain(`You have entered ${fname} ${lname}`);  
 })
