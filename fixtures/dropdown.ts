@@ -1,12 +1,12 @@
 import { test } from "@playwright/test";
 
-type Dropdown = {
+interface Dropdown {
   label: string;
   labelMultipleSelect1: string;
   labelMultipleSelect2: string;
 };
 
-type BootstrapDropdown = {
+interface BootstrapDropdown {
   country: string;
 };
 

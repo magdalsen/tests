@@ -1,43 +1,39 @@
 import { Page } from "@playwright/test";
 import moment from "moment";
+import { BasePage } from "../shared/base-page";
 
-export class CalendarPage {
-  readonly page: Page;
+export class CalendarPage extends BasePage {
 
-  constructor(page: Page) {
-    this.page = page;
-  }
-
-  get getCalendarData() {
+  get calendarData() {
     return "input[id='birthday']";
   }
 
-  get getStartDate() {
+  get startDate() {
     return "input[placeholder='Start date']";
   }
 
-  get getPreviousDate() {
+  get previousDate() {
     return "div[class='datepicker-days'] th[class='prev']";
   }
 
-  get getNextDate() {
+  get nextDate() {
     return "th[class='next']";
   }
 
-  get getMonthYear() {
+  get monthYear() {
     return "div[class='datepicker-days'] th[class='datepicker-switch']";
   }
 
-  get getSelectedDate() {
+  get selectedDate() {
     return "td[class='day']:text-is('5')";
   }
 
   async fillCalendar(date: string) {
-    await this.page.fill(this.getCalendarData, date);
+    await this.page.fill(this.calendarData, date);
   }
 
   async clickStartDateButton() {
-    await this.page.locator(this.getStartDate).click();
+    await this.page.locator(this.startDate).click();
   }
 
   async checkIfDateIsBefore(dateToSelect: string) {
@@ -45,6 +41,6 @@ export class CalendarPage {
   }
 
   async clickSelectedDate() {
-    await this.page.locator(this.getSelectedDate).click();
+    await this.page.locator(this.selectedDate).click();
   }
 }

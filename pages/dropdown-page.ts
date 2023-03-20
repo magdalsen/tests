@@ -1,42 +1,30 @@
 import { Page } from "@playwright/test";
+import { BasePage } from "../shared/base-page";
 
-export class DropdownPage {
-  readonly page: Page;
+export class DropdownPage extends BasePage {
 
-  constructor(page: Page) {
-    this.page = page;
-  }
-
-  get getSelectOne() {
-    return "#select-demo";
-  }
-
-  get getMultiSelect() {
+  get multiSelectList() {
     return "#multi-select";
   }
 
-  get getSelectedOneOption() {
-    return "p[class='selected-value text-size-14']";
-  }
-
-  get getPrintAllButton() {
+  get printAllButton() {
     return 'div.input-body button[id="printAll"]';
   }
 
-  get getSelectedMultiOption() {
-    return 'span[class="groupradiobutton block break-words"]';
+  get countryListAll() {
+    return 'ul[id="select2-country-results"]';
   }
 
-  get getCountry() {
-    return "ul#select2-country-results";
+  get countryByName() {
+    return 'li[class="select2-results__option"]';
   }
 
-  get getSingleSelect() {
+  get countryDropdownList() {
+    return 'select[id="country"]+span';
+  }
+
+  get singleSelect() {
     return 'span[id="select2-country-container"]';
-  }
-
-  async selectOneOption(label: string) {
-    await this.page.selectOption(this.getSelectOne, label);
   }
 
   async selectMultipleOption(
@@ -44,19 +32,19 @@ export class DropdownPage {
     labelMultipleSelect2: string
   ) {
     await this.page
-      .locator(this.getMultiSelect)
+      .locator(this.multiSelectList)
       .selectOption([labelMultipleSelect1, labelMultipleSelect2]);
   }
 
   async clickPrintAllButton() {
-    await this.page.locator(this.getPrintAllButton).click();
+    await this.page.locator(this.printAllButton).click();
   }
 
   async selectCountry(countryName: string) {
-    await this.page.click("#country+span");
+    await this.page.locator(this.countryDropdownList).click();
     await this.page
-      .locator(this.getCountry)
-      .locator("li", {
+      .locator(this.countryListAll)
+      .locator(this.countryByName, {
         hasText: countryName
       })
       .click();

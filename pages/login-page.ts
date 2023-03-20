@@ -1,21 +1,22 @@
 import { Page } from "@playwright/test";
+import { BasePage } from "../shared/base-page";
 
-export class LoginPage {
-  readonly page: Page;
+interface LoginData {
+  login: string,
+  password: string
+}
 
-  constructor(page: Page) {
-    this.page = page;
-  }
+export class LoginPage extends BasePage {
 
-  get getSignupLoginButton() {
+  get signupLoginButton() {
     return "a[href='/login']";
   }
 
-  get getLoginButton() {
+  get loginButton() {
     return "button[data-qa='login-button']";
   }
 
-  get getLogoutButton() {
+  get logoutButton() {
     return "a[href='/logout']";
   }
 
@@ -28,15 +29,15 @@ export class LoginPage {
   }
 
   async clickSignupLoginButtonPage() {
-    await this.page.locator(this.getSignupLoginButton).click();
+    await this.page.locator(this.signupLoginButton).click();
   }
 
-  async getLoginData({ login, password }) {
+  async fillLoginData({ login, password }:LoginData) {
     await this.page.fill(this.loginInput, login);
     await this.page.fill(this.passwordInput, password);
   }
 
   async clickLoginButton() {
-    await this.page.locator(this.getLoginButton).click();
+    await this.page.locator(this.loginButton).click();
   }
 }

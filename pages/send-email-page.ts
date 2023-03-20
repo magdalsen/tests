@@ -1,11 +1,7 @@
 import { Page } from "@playwright/test";
+import { BasePage } from "../shared/base-page";
 
-export class SendEmailPage {
-  readonly page: Page;
-
-  constructor(page: Page) {
-    this.page = page;
-  }
+export class SendEmailPage extends BasePage {
 
   get getContactButton() {
     return "a[href='/contact_us']";

@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
 
-type SendEmail = {
+interface SendEmail {
   name: string;
   email: string;
   subject: string;

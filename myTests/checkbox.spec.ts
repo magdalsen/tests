@@ -1,16 +1,20 @@
-import test, { expect } from "@playwright/test";
+import test, { expect, Page } from "@playwright/test";
 import { NavigatePage } from "../shared/navigate-page";
-import dotenv from "dotenv";
 
-dotenv.config({
-  path: ".env"
-});
+test.describe('Checkbox tests', () => {
+  let page: Page;
+  let navigatePage: NavigatePage;
 
-test("Checkbox test", async ({ page }) => {
-  const navigatePage = new NavigatePage(page);
-  await navigatePage.navigateToURL(`${process.env.LAMBDATEST_URL}`);
-  const singleCheckbox = page.locator("id=isAgeSelected");
-  await expect(singleCheckbox).not.toBeChecked();
-  await singleCheckbox.check();
-  await expect(singleCheckbox).toBeChecked();
+  test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+    navigatePage = new NavigatePage(page);
+    await navigatePage.navigateToLambdatestPage();
+  });
+  
+  test("Checkbox test", async () => {
+    const singleCheckbox = page.locator("id=isAgeSelected");
+    await expect(singleCheckbox).not.toBeChecked();
+    await singleCheckbox.check();
+    await expect(singleCheckbox).toBeChecked();
+  });
 });

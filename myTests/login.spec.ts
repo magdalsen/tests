@@ -1,21 +1,26 @@
-import { expect, test } from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
 import { LoginPage } from "../pages/login-page";
 import { NavigatePage } from "../shared/navigate-page";
-import dotenv from "dotenv";
 
-dotenv.config({
-  path: ".env"
-});
+test.describe('Login tests', () => {
+  let page: Page;
+  let navigatePage: NavigatePage;
+  let loginPage: LoginPage;
 
-test("Login test", async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const navigatePage = new NavigatePage(page);
-  await navigatePage.navigateToURL("");
-  await loginPage.clickSignupLoginButtonPage();
-  await loginPage.getLoginData({
-    login: process.env.LOGIN,
-    password: process.env.PASSWORD
+  test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+    navigatePage = new NavigatePage(page);
+    loginPage = new LoginPage(page);
+    await navigatePage.navigateToBaseURL();
   });
-  await loginPage.clickLoginButton();
-  await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
+  
+  test("Login test", async () => {
+    await loginPage.clickSignupLoginButtonPage();
+    await loginPage.fillLoginData({
+      login: process.env.LOGIN,
+      password: process.env.PASSWORD
+    });
+    await loginPage.clickLoginButton();
+    await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
+  });
 });

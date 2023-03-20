@@ -1,6 +1,6 @@
 import { test } from "@playwright/test";
 
-type Calendar = {
+interface Calendar {
   date: string;
   dateToSelect: string;
   selectedDay: number;

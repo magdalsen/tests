@@ -1,13 +1,21 @@
 import { Page } from "@playwright/test";
+import { BasePage } from "./base-page";
 
-export class NavigatePage {
-  readonly page: Page;
+export class NavigatePage extends BasePage {
 
-  constructor(page: Page) {
-    this.page = page;
+  async navigateToBaseURL() {
+    await this.page.goto(process.env.BASE_URL);
   }
 
-  async navigateToURL(url: string) {
-    await this.page.goto(url);
+  async navigateToCalendarPage() {
+    await this.page.goto(process.env.CALENDAR_URL);
+  }
+
+  async navigateToLambdatestPage() {
+    await this.page.goto(process.env.LAMBDATEST_URL);
+  }
+
+  async navigateToBootstrapPage() {
+    await this.page.goto(process.env.BOOTSTRAP_DROPDOWN_URL);
   }
 }
