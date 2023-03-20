@@ -21,6 +21,6 @@ test.describe("Login tests", () => {
       password: process.env.PASSWORD
     });
     await loginPage.clickLoginButton();
-    await expect(page.locator(loginPage.getLogoutButton)).toHaveText("Logout");
+    await expect(page.locator(loginPage.logoutButton)).toHaveText("Logout");
   });
 });
