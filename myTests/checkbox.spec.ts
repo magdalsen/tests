@@ -1,7 +1,7 @@
 import test, { expect, Page } from "@playwright/test";
 import { NavigatePage } from "../shared/navigate-page";
 
-test.describe('Checkbox tests', () => {
+test.describe("Checkbox tests", () => {
   let page: Page;
   let navigatePage: NavigatePage;
 
@@ -10,7 +10,7 @@ test.describe('Checkbox tests', () => {
     navigatePage = new NavigatePage(page);
     await navigatePage.navigateToLambdatestPage();
   });
-  
+
   test("Checkbox test", async () => {
     const singleCheckbox = page.locator("id=isAgeSelected");
     await expect(singleCheckbox).not.toBeChecked();

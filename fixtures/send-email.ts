@@ -6,7 +6,7 @@ interface SendEmail {
   subject: string;
   message: string;
   success_message: string;
-};
+}
 
 const sendEmail = test.extend<SendEmail>({
   name: "Magda",

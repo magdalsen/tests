@@ -3,7 +3,6 @@ import moment from "moment";
 import { BasePage } from "../shared/base-page";
 
 export class CalendarPage extends BasePage {
-
   get calendarData() {
     return "input[id='birthday']";
   }

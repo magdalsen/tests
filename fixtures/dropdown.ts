@@ -4,11 +4,11 @@ interface Dropdown {
   label: string;
   labelMultipleSelect1: string;
   labelMultipleSelect2: string;
-};
+}
 
 interface BootstrapDropdown {
   country: string;
-};
+}
 
 export const dropdownTest = test.extend<Dropdown>({
   label: "Tuesday",

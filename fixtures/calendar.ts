@@ -5,7 +5,7 @@ interface Calendar {
   dateToSelect: string;
   selectedDay: number;
   selectedYear: number;
-};
+}
 
 export const calendarTest = test.extend<Calendar>({
   date: "1994-12-04",

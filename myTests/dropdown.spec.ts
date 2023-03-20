@@ -3,7 +3,7 @@ import { DropdownPage } from "../pages/dropdown-page";
 import { bootstrapDropdownTest } from "../fixtures/dropdown";
 import { NavigatePage } from "../shared/navigate-page";
 
-test.describe('Dropdown tests', () => {
+test.describe("Dropdown tests", () => {
   let page: Page;
   let navigatePage: NavigatePage;
   let dropdownPage: DropdownPage;
@@ -14,12 +14,9 @@ test.describe('Dropdown tests', () => {
     dropdownPage = new DropdownPage(page);
     await navigatePage.navigateToBootstrapPage();
   });
-  
-  bootstrapDropdownTest(
-    "Select single dropdown with search",
-    async ({ country }) => {
-      await dropdownPage.selectCountry(country);
-      await expect(page.locator(dropdownPage.singleSelect)).toHaveText(country);
-    }
-  );
+
+  bootstrapDropdownTest("Select single dropdown with search", async ({ country }) => {
+    await dropdownPage.selectCountry(country);
+    await expect(page.locator(dropdownPage.singleSelect)).toHaveText(country);
+  });
 });

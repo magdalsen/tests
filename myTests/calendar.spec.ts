@@ -4,7 +4,7 @@ import { CalendarPage } from "../pages/calendar-page";
 import { calendarTest } from "../fixtures/calendar";
 import { NavigatePage } from "../shared/navigate-page";
 
-test.describe('Calendar tests', () => {
+test.describe("Calendar tests", () => {
   let page: Page;
   let navigatePage: NavigatePage;
   let calendarPage: CalendarPage;
@@ -15,12 +15,12 @@ test.describe('Calendar tests', () => {
     calendarPage = new CalendarPage(page);
     await navigatePage.navigateToCalendarPage();
   });
-  
+
   calendarTest("Check if calendar data is fullfilled", async ({ date }) => {
     await calendarPage.fillCalendar(date);
     await expect(page.locator(calendarPage.calendarData)).toHaveValue(date);
   });
-  
+
   calendarTest(
     "Check if calendar data is fullfilled using moment",
     async ({ dateToSelect, selectedYear }) => {
@@ -28,7 +28,7 @@ test.describe('Calendar tests', () => {
       const next = page.locator(calendarPage.nextDate);
       const monthYear = page.locator(calendarPage.monthYear);
       const currentYear = new Date().getFullYear();
-  
+
       await calendarPage.clickStartDateButton();
       while ((await monthYear.textContent()) != dateToSelect) {
         (await calendarPage.checkIfDateIsBefore(dateToSelect))

@@ -2,12 +2,11 @@ import { Page } from "@playwright/test";
 import { BasePage } from "../shared/base-page";
 
 interface LoginData {
-  login: string,
-  password: string
+  login: string;
+  password: string;
 }
 
 export class LoginPage extends BasePage {
-
   get signupLoginButton() {
     return "a[href='/login']";
   }
@@ -32,7 +31,7 @@ export class LoginPage extends BasePage {
     await this.page.locator(this.signupLoginButton).click();
   }
 
-  async fillLoginData({ login, password }:LoginData) {
+  async fillLoginData({ login, password }: LoginData) {
     await this.page.fill(this.loginInput, login);
     await this.page.fill(this.passwordInput, password);
   }

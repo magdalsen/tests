@@ -2,7 +2,7 @@ import { expect, Page, test } from "@playwright/test";
 import { LoginPage } from "../pages/login-page";
 import { NavigatePage } from "../shared/navigate-page";
 
-test.describe('Login tests', () => {
+test.describe("Login tests", () => {
   let page: Page;
   let navigatePage: NavigatePage;
   let loginPage: LoginPage;
@@ -13,7 +13,7 @@ test.describe('Login tests', () => {
     loginPage = new LoginPage(page);
     await navigatePage.navigateToBaseURL();
   });
-  
+
   test("Login test", async () => {
     await loginPage.clickSignupLoginButtonPage();
     await loginPage.fillLoginData({

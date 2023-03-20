@@ -2,7 +2,6 @@ import { Page } from "@playwright/test";
 import { BasePage } from "../shared/base-page";
 
 export class SendEmailPage extends BasePage {
-
   get getContactButton() {
     return "a[href='/contact_us']";
   }

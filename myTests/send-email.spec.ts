@@ -3,7 +3,7 @@ import { SendEmailPage } from "../pages/send-email-page";
 import { sendEmailTest } from "../fixtures/send-email";
 import { NavigatePage } from "../shared/navigate-page";
 
-test.describe('Send email tests', () => {
+test.describe("Send email tests", () => {
   let page: Page;
   let navigatePage: NavigatePage;
   let sendEmailPage: SendEmailPage;
@@ -14,7 +14,7 @@ test.describe('Send email tests', () => {
     sendEmailPage = new SendEmailPage(page);
     await navigatePage.navigateToBaseURL();
   });
-  
+
   sendEmailTest(
     "Go to contact page and send email",
     async ({ name, email, subject, message, success_message }) => {
