@@ -4,7 +4,7 @@ export const ID = 10;
 export const NAME = "doggie";
 
 test.describe.parallel("API testing", () => {
-  test("Assert GET response status", async ({ request }) => {
+  test("Response status - GET method", async ({ request }) => {
     const dogs = await request.get(`${process.env.BASE_URL_PETSTORE}/pet/${ID}`);
     expect(dogs.status()).toBe(200);
   });
