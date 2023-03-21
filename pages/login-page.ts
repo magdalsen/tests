@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "../shared/base-page";
 
-interface LoginData {
+export interface LoginData {
   login: string;
   password: string;
 }

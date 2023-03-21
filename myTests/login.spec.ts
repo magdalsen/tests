@@ -1,6 +1,7 @@
 import { expect, Page, test } from "@playwright/test";
 import { LoginPage } from "../pages/login-page";
 import { NavigatePage } from "../shared/navigate-page";
+import { LoginData } from "../pages/login-page";
 
 test.describe("Login tests", () => {
   let page: Page;
@@ -16,7 +17,7 @@ test.describe("Login tests", () => {
 
   test("Login test", async () => {
     await loginPage.clickSignupLoginButtonPage();
-    await loginPage.fillLoginData({
+    await loginPage.fillLoginData(<LoginData>{
       login: process.env.LOGIN,
       password: process.env.PASSWORD
     });
