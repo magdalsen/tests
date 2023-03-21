@@ -4,17 +4,12 @@ const NAME = "doggie";
 export const petShopResponses = {
   get: {
     petById: {
-      category: { id: ID, name: "string" },
-      id: ID,
-      name: NAME,
+      category: { id: 100, name: "Frankie" },
+      id: 100,
+      name: "Frankie",
       photoUrls: ["string"],
-      status: "string",
-      tags: [
-        {
-          id: ID,
-          name: "string"
-        }
-      ]
+      status: "available",
+      tags: [{ id: 100, name: "Frankie" }]
     }
   },
   post: {
@@ -33,14 +28,6 @@ export const petShopResponses = {
         }
       ],
       status: "available"
-    },
-    newPetDataResponse: {
-      category: { id: 100, name: "Frankie" },
-      id: 100,
-      name: "Frankie",
-      photoUrls: ["string"],
-      status: "available",
-      tags: [{ id: 100, name: "Frankie" }]
     }
   }
 };
