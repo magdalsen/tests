@@ -17,6 +17,14 @@ export const petShopResponses = {
       photoUrls: [],
       status: "available",
       tags: [{ id: 0, name: "Nice" }]
+    },
+    newPetDataResponse: {
+      id: 11,
+      category: { id: 0, name: "Jeremy" },
+      name: "dog",
+      photoUrls: [],
+      tags: [{ id: 0, name: "Nice" }],
+      status: "available"
     }
   },
   put: {

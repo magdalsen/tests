@@ -1,6 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { petShopResponses } from "../data/pet-shop-responses";
-export const ID = 10;
+const ID_find = 10;
+const ID_delete = 12;
 
 test.describe.parallel("API testing", () => {
   test("Add a new pet to the store", async ({ request }) => {
@@ -15,19 +16,12 @@ test.describe.parallel("API testing", () => {
       `${process.env.BASE_URL_PETSTORE}/pet/${petJson.id}`
     );
     expect(await dogs.json()).toEqual(
-      expect.objectContaining({
-        id: 11,
-        category: { id: 0, name: "Jeremy" },
-        name: "dog",
-        photoUrls: [],
-        tags: [{ id: 0, name: "Nice" }],
-        status: "available"
-      })
+      expect.objectContaining(petShopResponses.post.newPetDataResponse)
     );
   });
 
   test("Find pet by ID", async ({ request }) => {
-    const dogs = await request.get(`${process.env.BASE_URL_PETSTORE}/pet/${ID}`);
+    const dogs = await request.get(`${process.env.BASE_URL_PETSTORE}/pet/${ID_find}`);
     expect(dogs.status()).toBe(200);
     expect(await dogs.json()).toEqual(
       expect.objectContaining(petShopResponses.get.petById)
@@ -59,7 +53,7 @@ test.describe.parallel("API testing", () => {
       data: petShopResponses.delete.addToDelete
     });
 
-    const dogs = await request.delete(`${process.env.BASE_URL_PETSTORE}/pet/12`);
+    const dogs = await request.delete(`${process.env.BASE_URL_PETSTORE}/pet/${ID_delete}`);
     expect(dogs.status()).toBe(200);
   });
 });
