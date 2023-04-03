@@ -12,7 +12,7 @@ export class CalendarPage extends BasePage {
   }
 
   get previousDate() {
-    return "div[class='datepicker-days'] th[class='prev']";
+    return "div.datepicker-days th.prev";
   }
 
   get nextDate() {

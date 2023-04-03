@@ -29,8 +29,7 @@ test.describe("Send email tests", () => {
         await dialog.accept();
       });
       await sendEmailPage.clickSubmitButton();
-      const successMessage = page.locator(sendEmailPage.successMessage);
-      await expect(successMessage).toHaveText(success_message);
+      expect(await sendEmailPage.checkSuccessMessage()).toBe(success_message);
     }
   );
 });

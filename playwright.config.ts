@@ -1,8 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
-dotenv.config({
-  path: ".env"
-});
+dotenv.config({});
 
 /**
  * Read environment variables from file.
@@ -51,7 +49,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   // testMatch: ["myTests/frames.spec.ts"],
   use: {
-    headless: true,
+    headless: false,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     launchOptions: {

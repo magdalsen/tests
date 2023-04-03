@@ -7,7 +7,7 @@ export class DropdownPage extends BasePage {
   }
 
   get printAllButton() {
-    return 'div.input-body button[id="printAll"]';
+    return "div.input-body button#printAll";
   }
 
   get countryListAll() {

@@ -27,7 +27,11 @@ export class SendEmailPage extends BasePage {
   }
 
   get successMessage() {
-    return 'div[class="status alert alert-success"]';
+    return this.page.locator('div[class="status alert alert-success"]');
+  }
+
+  async checkSuccessMessage() {
+    return this.successMessage.textContent();
   }
 
   async clickContactButtonPage() {
