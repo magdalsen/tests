@@ -1,4 +1,3 @@
-import { Page } from "@playwright/test";
 import moment from "moment";
 import { BasePage } from "../shared/base-page";
 

@@ -1,4 +1,3 @@
-import { Page } from "@playwright/test";
 import { BasePage } from "../shared/base-page";
 
 export interface LoginData {

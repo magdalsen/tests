@@ -2,15 +2,15 @@ import test, { expect } from "@playwright/test";
 import { petShopResponses } from "../data/pet-shop-responses";
 const ID_find = 10;
 const ID_delete = 12;
-const url: string = `${process.env.BASE_URL_PETSTORE}/pet/`;
+const url = `${process.env.BASE_URL_PETSTORE}/pet/`;
 
 test.describe.parallel("API testing", () => {
   test("Add a new pet to the store", async ({ request }) => {
     const newPet = await request.post(url, {
       data: petShopResponses.post.newPetDataRequest
     });
-    let addedPet = await newPet.text();
-    let petJson = JSON.parse(addedPet);
+    const addedPet = await newPet.text();
+    const petJson = JSON.parse(addedPet);
 
     const dogs = await request.get(url + petJson.id);
     expect(await dogs.json()).toEqual(
