@@ -1,4 +1,6 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
+dotenv.config({});
 
 /**
  * Read environment variables from file.
@@ -10,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './myTests',
+  testDir: "./myTests",
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -29,44 +31,54 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [["dot"], ["json", {
-    outputFile: "jsonReports/jsonReport.json"
-  }], ['html', {
-    open: "never"
-  }]],
+  reporter: [
+    ["dot"],
+    [
+      "json",
+      {
+        outputFile: "jsonReports/jsonReport.json"
+      }
+    ],
+    [
+      "html",
+      {
+        open: "never"
+      }
+    ]
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   // testMatch: ["myTests/frames.spec.ts"],
   use: {
-    headless: false,
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    headless: true,
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
     launchOptions: {
       slowMo: 1000
     },
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry"
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] }
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] }
     },
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] }
+    }
 
     /* Test against mobile viewports. */
     // {
@@ -87,7 +99,7 @@ export default defineConfig({
     //   name: 'Google Chrome',
     //   use: { channel: 'chrome' },
     // },
-  ],
+  ]
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
   // outputDir: 'test-results/',

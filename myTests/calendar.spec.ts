@@ -1,43 +1,42 @@
-import test from "@playwright/test";
-import moment from "moment";
+import { Page, test } from "@playwright/test";
+import { expect } from "@playwright/test";
+import { CalendarPage } from "../pages/calendar-page";
+import { calendarTest } from "../fixtures/calendar";
+import { NavigatePage } from "../shared/navigate-page";
 
-test("Calendar using fill function", async ({ page }) => {
-  await page.goto(
-    "https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo"
-  );
-  let date = "1994-12-04";
+test.describe("Calendar tests", () => {
+  let page: Page;
+  let navigatePage: NavigatePage;
+  let calendarPage: CalendarPage;
 
-  await page.fill("id=birthday", date);
-});
+  test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+    navigatePage = new NavigatePage(page);
+    calendarPage = new CalendarPage(page);
+    await navigatePage.navigateToCalendarPage();
+  });
 
-test("Calendar demo using moment", async ({ page }) => {
-  await page.goto(
-    "https://www.lambdatest.com/selenium-playground/bootstrap-date-picker-demo"
-  );
-  await page.click("input[placeholder='Start date']");
+  calendarTest("Check if calendar data is fullfilled", async ({ date }) => {
+    await calendarPage.fillCalendar(date);
+    await expect(page.locator(calendarPage.calendarData)).toHaveValue(date);
+  });
 
-  const prev = page.locator("div[class='datepicker-days'] th[class='prev']");
-  const next = page.locator("th[class='next']");
-  const monthYear = page.locator(
-    "div[class='datepicker-days'] th[class='datepicker-switch']"
-  );
+  calendarTest(
+    "Check if calendar data is fullfilled using moment",
+    async ({ dateToSelect, selectedYear }) => {
+      const previous = page.locator(calendarPage.previousDate);
+      const next = page.locator(calendarPage.nextDate);
+      const monthYear = page.locator(calendarPage.monthYear);
+      const currentYear = new Date().getFullYear();
 
-  let dateToSelect: string = "December 2022";
-
-  const thisMonth = moment(dateToSelect, "MMMM YYYY").isBefore();
-
-  while ((await monthYear.textContent()) != dateToSelect) {
-    if (thisMonth) {
-      await prev.click();
-    } else {
-      await next.click();
+      await calendarPage.clickStartDateButton();
+      while ((await monthYear.textContent()) != dateToSelect) {
+        (await calendarPage.checkIfDateIsBefore(dateToSelect))
+          ? await previous.click()
+          : await next.click();
+      }
+      await calendarPage.clickSelectedDate();
+      await expect(selectedYear).toBeLessThan(currentYear);
     }
-  }
-
-  // await page.getByRole('cell', { name: '4' }).nth(0).click();
-  await page.waitForTimeout(3000);
-
-  // await page.getByRole('cell', { name: 'February 2023' }).click();
-  // await page.getByText('Feb', { exact: true }).click();
-  // await page.getByRole('cell', { name: '9' }).nth(1).click();
+  );
 });

@@ -1,17 +1,27 @@
-import { chromium, expect, test } from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
+import { LoginPage } from "../pages/login-page";
+import { NavigatePage } from "../shared/navigate-page";
+import { LoginData } from "../pages/login-page";
 
-test("Login test demo", async () => {
-  const browser = await chromium.launch();
-  const context = await browser.newContext();
-  const page = await context.newPage();
+test.describe("Login tests", () => {
+  let page: Page;
+  let navigatePage: NavigatePage;
+  let loginPage: LoginPage;
 
-  await page.goto("https://automationexercise.com/");
-  // await page.click("//a[contains(text(),'Test Cases')]");
-  await page.locator("text=Signup / Login").click();
-  await page.fill("input[data-qa='login-email']", "magdal.sen@gmail.com");
-  await page.fill("input[data-qa='login-password']", "Haslo@1234");
+  test.beforeEach(async ({ browser }) => {
+    page = await browser.newPage();
+    navigatePage = new NavigatePage(page);
+    loginPage = new LoginPage(page);
+    await navigatePage.navigateToBaseURL();
+  });
 
-  await page.locator("button[data-qa='login-button']").click();
-
-  await page.waitForTimeout(5000);
+  test("Login test", async () => {
+    await loginPage.clickSignupLoginButtonPage();
+    await loginPage.fillLoginData(<LoginData>{
+      login: process.env.LOGIN,
+      password: process.env.PASSWORD
+    });
+    await loginPage.clickLoginButton();
+    await expect(page.locator(loginPage.logoutButton)).toHaveText("Logout");
+  });
 });
