@@ -1,10 +1,10 @@
 import test, { expect } from "@playwright/test";
-import { petShopResponses } from "../data/pet-shop-responses";
+import { petShopResponses } from "../../../data/pet-shop-responses";
 const ID_find = 10;
 const ID_delete = 12;
 const url = `${process.env.BASE_URL_PETSTORE}/pet/`;
 
-test.describe.parallel("API testing", () => {
+test.describe.parallel("E2e API tests", () => {
   test("Add a new pet to the store", async ({ request }) => {
     const newPet = await request.post(url, {
       data: petShopResponses.post.newPetDataRequest

@@ -8,7 +8,7 @@ interface SendEmail {
   success_message: string;
 }
 
-const sendEmail = test.extend<SendEmail>({
+const contactUs = test.extend<SendEmail>({
   name: "Magda",
   email: "test@test.pl",
   subject: "subject test",
@@ -16,4 +16,4 @@ const sendEmail = test.extend<SendEmail>({
   success_message: "Success! Your details have been submitted successfully."
 });
 
-export const sendEmailTest = sendEmail;
+export const contactUsTest = contactUs;
