@@ -5,7 +5,7 @@ export interface LoginData {
   password: string;
 }
 
-export class LoginPage extends BasePage {
+export class LogoutPage extends BasePage {
   get signupLoginButton() {
     return "a[href='/login']";
   }
@@ -23,15 +23,11 @@ export class LoginPage extends BasePage {
   }
 
   get logoutButton() {
-    return this.page.locator("a[href='/logout']");
+    return "a[href='/logout']";
   }
 
-  // async checkLogoutButton() {
-  //   return this.logoutButton.textContent();
-  // }
-
-  get badLoginMessage() {
-    return this.page.locator("form[action='/login'] > p");
+  get logoutText() {
+    return this.page.locator(".login-form > h2");
   }
 
   async clickSignupLoginButtonPage() {
@@ -45,5 +41,9 @@ export class LoginPage extends BasePage {
 
   async clickLoginButton() {
     await this.page.locator(this.loginButton).click();
+  }
+
+  async clickLogoutButton() {
+    await this.page.locator(this.logoutButton).click();
   }
 }
