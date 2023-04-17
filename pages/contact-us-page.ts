@@ -1,6 +1,6 @@
 import { BasePage } from "../shared/base-page";
 
-export class SendEmailPage extends BasePage {
+export class ContactUsPage extends BasePage {
   get getContactButton() {
     return "a[href='/contact_us']";
   }
