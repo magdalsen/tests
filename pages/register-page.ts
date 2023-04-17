@@ -22,8 +22,12 @@ export class RegisterPage extends BasePage {
     return "input[data-qa='signup-email']";
   }
 
+  get errorMessage() {
+    return "form[action='/signup'] > p";
+  }
+
   get signupErrorMessage() {
-    return this.page.locator("form[action='/signup'] > p");
+    return this.page.locator(this.errorMessage);
   }
 
   async clickSignupLoginButtonPage() {
